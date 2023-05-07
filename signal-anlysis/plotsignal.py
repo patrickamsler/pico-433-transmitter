@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 
 # Load the data from the CSV file
-data = pd.read_csv('signal-sample/a-button-on.csv', skiprows=[0], header=None, names=['time', 'amplitude'])
+data = pd.read_csv('signal-sample/test1/a-button-on.csv', skiprows=[0], header=None, names=['time', 'amplitude'])
 
 # Extract the time and amplitude values
 time = data['time'].values

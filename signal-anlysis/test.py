@@ -16,9 +16,11 @@ def main():
     edges = find_edges(amplitude_norm)
 
     frames = find_frames(amplitude_norm, time, edges)
-    for f in frames:
-        frames_bits = frame_to_bits(f)
-        print(frames_bits)
+    for i,f in enumerate(frames):
+        bits = frame_to_bits(f)
+        dec = int(bits, 2)
+        hex = format(dec, '02x')
+        print('Frame {}: {} = {} = {}'.format(i, bits, dec, hex))
         plot(f['time'], f['amplitude'])
     
 def plot(time, amplitude):
@@ -67,7 +69,8 @@ def find_frames(amplitude, time, edges):
     return frames
 
 def frame_to_bits(frame):
-    for i in range(0, len(frame['edges']), 2):
+    bits = ''
+    for i in range(2, len(frame['edges']), 2):
         first_edge = frame['edges'][i]
         if i+2 >= len(frame['edges']):
             second_edge = len(frame['amplitude'])
@@ -76,9 +79,10 @@ def frame_to_bits(frame):
         amp_sub = frame['amplitude'][first_edge:second_edge]
         # check if array contains more zeros or ones
         if np.count_nonzero(amp_sub) > len(amp_sub)/2:
-            print('1', end='')
+            bits += '1'
         else:
-            print('0', end='')
+            bits += '0'
+    return bits
 
 # Call the main function
 main()

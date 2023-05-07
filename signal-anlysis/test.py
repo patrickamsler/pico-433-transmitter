@@ -17,6 +17,8 @@ def main():
 
     frames = find_frames(amplitude_norm, time, edges)
     for f in frames:
+        frames_bits = frame_to_bits(f)
+        print(frames_bits)
         plot(f['time'], f['amplitude'])
     
 def plot(time, amplitude):
@@ -51,11 +53,32 @@ def find_frames(amplitude, time, edges):
     # split the amplitude into frames
     edges_arr = np.split(edges, num_of_frames)
     frames = []
-    for e in edges_arr:
-        amp_sub = amplitude[e[0]:e[-1]+2]
-        time_sub = time[e[0]:e[-1]+2]
-        frames.append({'time': time_sub, 'amplitude': amp_sub})
+    for i,e in enumerate(edges_arr):
+        first = e[0]
+        if i+1 >= len(edges_arr):
+            last = len(amplitude)
+        else:
+            last = edges_arr[i+1][0]
+        
+        amp_sub = amplitude[first:last]
+        time_sub = time[first:last]
+        e_norm = e - e[0]
+        frames.append({'time': time_sub, 'amplitude': amp_sub, 'edges': e_norm})
     return frames
+
+def frame_to_bits(frame):
+    for i in range(0, len(frame['edges']), 2):
+        first_edge = frame['edges'][i]
+        if i+2 >= len(frame['edges']):
+            second_edge = len(frame['amplitude'])
+        else:
+            second_edge = frame['edges'][i+2]
+        amp_sub = frame['amplitude'][first_edge:second_edge]
+        # check if array contains more zeros or ones
+        if np.count_nonzero(amp_sub) > len(amp_sub)/2:
+            print('1', end='')
+        else:
+            print('0', end='')
 
 # Call the main function
 main()

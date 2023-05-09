@@ -18,7 +18,9 @@ def main():
 
     frames = find_frames(amplitude_norm, time, edges)
     for i, f in enumerate(frames):
-        print('Frame {}: {} = {}'.format(i, f['bits'], f['hex']))
+        print('Frame {}: {} = {} - frame_length: {}, period: {:.10f}, preamble_length: {}, preamble_high: {}'.format(i,
+              f['bits'], f['hex'], f['frame_length'], f['cycle_length'], f['preamble_length'], f['preamble_high']))
+        print(f['cycle_length'] * 48 + f['preamble_length'])
         plot(f['time'], f['amplitude'])
 
 
@@ -29,12 +31,15 @@ def plot(time, amplitude):
     plt.xlabel('Time (s)')
     plt.ylabel('Amplitude')
     plt.title('Amplitude vs Time')
+    num_ticks = 20
+    x_ticks = np.linspace(time[0], time[-1], num_ticks)
+    plt.xticks(x_ticks)
     plt.show()
 
 
 def loaddata():
     # Load the data from the CSV file
-    data = pd.read_csv('signal-sample/test2/samples-a-on-1.csv',
+    data = pd.read_csv('/Users/patrick/projects/pico-433-transmitter/signal-anlysis/signal-sample/test2/samples-a-on-1.csv',
                        skiprows=[0], header=None, names=['time', 'amplitude'])
     # Extract the time and amplitude values
     time = data['time'].values
@@ -68,6 +73,18 @@ def calc_bits(edges, amplitude):
     return bits
 
 
+def calc_cycle_length(time, edges):
+    cycles = []
+    for i in range(2, len(edges), 2):  # skip first two edges
+        if i+2 > len(edges):
+            time_cycle = (time[-1] - time[i])
+        else:
+            time_cycle = (time[i+2] - time[i])
+        cycles.append(time_cycle)
+    avg_cycle_length = sum(cycles) / len(cycles)
+    return avg_cycle_length
+
+
 def build_frame(amplitude, time, edges):
     bits = calc_bits(edges, amplitude)
     hex = format(int(bits, 2), 'x')
@@ -76,7 +93,11 @@ def build_frame(amplitude, time, edges):
         'amplitude': amplitude,
         'edges': edges,
         'bits': bits,
-        'hex': hex
+        'hex': hex,
+        'frame_length': time[-1] - time[0],
+        'cycle_length': calc_cycle_length(time, edges),
+        'preamble_length': time[edges[2]] - time[0],
+        'preamble_high': time[edges[1]] - time[0],
     }
     return frame
 
@@ -96,7 +117,7 @@ def find_frames(amplitude, time, edges):
             last = edges_arr[i+1][0]
 
         amp_sub = amplitude[first:last]
-        time_sub = time[first:last]
+        time_sub = time[first:last] - time[first]
         e_norm = e - e[0]
 
         frames.append(build_frame(amp_sub, time_sub, e_norm))

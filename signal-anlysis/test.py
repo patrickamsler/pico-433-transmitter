@@ -51,6 +51,36 @@ def find_edges(amplitude):
     return edges[0]
 
 
+def calc_bits(edges, amplitude):
+    bits = ''
+    for i in range(2, len(edges), 2):
+        first_edge = edges[i]
+        if i+2 >= len(edges):
+            second_edge = len(amplitude)
+        else:
+            second_edge = edges[i+2]
+        amp_sub = amplitude[first_edge:second_edge]
+        # check if array contains more zeros or ones
+        if np.count_nonzero(amp_sub) > len(amp_sub)/2:
+            bits += '1'
+        else:
+            bits += '0'
+    return bits
+
+
+def build_frame(amplitude, time, edges):
+    bits = calc_bits(edges, amplitude)
+    hex = format(int(bits, 2), 'x')
+    frame = {
+        'time': time,
+        'amplitude': amplitude,
+        'edges': edges,
+        'bits': bits,
+        'hex': hex
+    }
+    return frame
+
+
 def find_frames(amplitude, time, edges):
     # one edge for positive and one for negative, 25 positive edges per frame
     num_of_frames = len(edges) / 2 / 25
@@ -69,30 +99,8 @@ def find_frames(amplitude, time, edges):
         time_sub = time[first:last]
         e_norm = e - e[0]
 
-        # build frame
-        bits = calc_bits(e_norm, amp_sub)
-        hex = format(int(bits, 2), 'x')
-        frame = {'time': time_sub, 'amplitude': amp_sub,
-                 'edges': e_norm, 'bits': bits, 'hex': hex}
-        frames.append(frame)
+        frames.append(build_frame(amp_sub, time_sub, e_norm))
     return frames
-
-
-def calc_bits(edges, amplitude):
-    bits = ''
-    for i in range(2, len(edges), 2):
-        first_edge = edges[i]
-        if i+2 >= len(edges):
-            second_edge = len(amplitude)
-        else:
-            second_edge = edges[i+2]
-        amp_sub = amplitude[first_edge:second_edge]
-        # check if array contains more zeros or ones
-        if np.count_nonzero(amp_sub) > len(amp_sub)/2:
-            bits += '1'
-        else:
-            bits += '0'
-    return bits
 
 
 # Call the main function

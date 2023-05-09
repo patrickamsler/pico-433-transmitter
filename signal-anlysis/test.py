@@ -20,7 +20,6 @@ def main():
     for i, f in enumerate(frames):
         print('Frame {}: {} = {} - frame_length: {}, period: {:.10f}, preamble_length: {}, preamble_high: {}'.format(i,
               f['bits'], f['hex'], f['frame_length'], f['cycle_length'], f['preamble_length'], f['preamble_high']))
-        print(f['cycle_length'] * 48 + f['preamble_length'])
         plot(f['time'], f['amplitude'])
 
 
@@ -76,10 +75,10 @@ def calc_bits(edges, amplitude):
 def calc_cycle_length(time, edges):
     cycles = []
     for i in range(2, len(edges), 2):  # skip first two edges
-        if i+2 > len(edges):
-            time_cycle = (time[-1] - time[i])
+        if i+2 >= len(edges):
+            time_cycle = (time[-1] - time[edges[i]])
         else:
-            time_cycle = (time[i+2] - time[i])
+            time_cycle = (time[edges[i+2]] - time[edges[i]])
         cycles.append(time_cycle)
     avg_cycle_length = sum(cycles) / len(cycles)
     return avg_cycle_length

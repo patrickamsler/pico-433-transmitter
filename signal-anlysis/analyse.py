@@ -67,7 +67,7 @@ def plot(time, amplitude):
 
 def loaddata():
     # Load the data from the CSV file
-    data = pd.read_csv('/Users/patrick/projects/pico-433-transmitter/signal-anlysis/signal-sample/test2/samples-a-on-3.csv',
+    data = pd.read_csv('/Users/patrick/projects/pico-433-transmitter/signal-anlysis/signal-sample/test2/samples-a-on-1.csv',
                        skiprows=[0], header=None, names=['time', 'amplitude'])
     # Extract the time and amplitude values
     time = data['time'].values

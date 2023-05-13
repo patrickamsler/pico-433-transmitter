@@ -2,22 +2,29 @@ import json
 
 # Number of edges: 800
 # Number of frames: 16.0
-# Frame 0: 001101111100001100011100 = 37c31c - frame_length: 0.039000, cycle_length: 0.001513, high_peak: 0.001092, low_peak: 0.000317, preamble_length: 0.002700, preamble_high: 0.000400
-# Frame 1: 001101111100001100011100 = 37c31c - frame_length: 0.039000, cycle_length: 0.001513, high_peak: 0.001075, low_peak: 0.000300, preamble_length: 0.002700, preamble_high: 0.000300
-# Frame 2: 001101111100001100011100 = 37c31c - frame_length: 0.039100, cycle_length: 0.001517, high_peak: 0.000992, low_peak: 0.000217, preamble_length: 0.002700, preamble_high: 0.000300
-# Frame 3: 001101111100001100011100 = 37c31c - frame_length: 0.039000, cycle_length: 0.001517, high_peak: 0.000967, low_peak: 0.000217, preamble_length: 0.002600, preamble_high: 0.000200
-# Frame 4: 001101111100001100011100 = 37c31c - frame_length: 0.046600, cycle_length: 0.001521, high_peak: 0.000850, low_peak: 0.000342, preamble_length: 0.010100, preamble_high: 0.002800
-# Frame 5: 001101111100001100011100 = 37c31c - frame_length: 0.046600, cycle_length: 0.001521, high_peak: 0.000833, low_peak: 0.000342, preamble_length: 0.010100, preamble_high: 0.002900
-# Frame 6: 001101111100001100011100 = 37c31c - frame_length: 0.046600, cycle_length: 0.001517, high_peak: 0.000833, low_peak: 0.000342, preamble_length: 0.010200, preamble_high: 0.002900
-# Frame 7: 001101111100001100011100 = 37c31c - frame_length: 0.046700, cycle_length: 0.001521, high_peak: 0.000842, low_peak: 0.000333, preamble_length: 0.010200, preamble_high: 0.002900
-# Frame 8: 001110010101000001011100 = 39505c - frame_length: 0.039000, cycle_length: 0.001517, high_peak: 0.000970, low_peak: 0.000229, preamble_length: 0.002600, preamble_high: 0.000200
-# Frame 9: 001110010101000001011100 = 39505c - frame_length: 0.039000, cycle_length: 0.001517, high_peak: 0.000980, low_peak: 0.000221, preamble_length: 0.002600, preamble_high: 0.000200
-# Frame 10: 001110010101000001011100 = 39505c - frame_length: 0.039000, cycle_length: 0.001517, high_peak: 0.000970, low_peak: 0.000214, preamble_length: 0.002600, preamble_high: 0.000200
-# Frame 11: 001110010101000001011100 = 39505c - frame_length: 0.039000, cycle_length: 0.001517, high_peak: 0.000940, low_peak: 0.000186, preamble_length: 0.002600, preamble_high: 0.000200
-# Frame 12: 001110010101000001011100 = 39505c - frame_length: 0.046600, cycle_length: 0.001521, high_peak: 0.000820, low_peak: 0.000343, preamble_length: 0.010100, preamble_high: 0.002800
-# Frame 13: 001110010101000001011100 = 39505c - frame_length: 0.046600, cycle_length: 0.001521, high_peak: 0.000830, low_peak: 0.000364, preamble_length: 0.010100, preamble_high: 0.002800
-# Frame 14: 001110010101000001011100 = 39505c - frame_length: 0.046600, cycle_length: 0.001521, high_peak: 0.000830, low_peak: 0.000357, preamble_length: 0.010100, preamble_high: 0.002800
-# Frame 15: 001110010101000001011100 = 39505c - frame_length: 0.103700, cycle_length: 0.003900, high_peak: 0.000830, low_peak: 0.000371, preamble_length: 0.010100, preamble_high: 0.002800
+# Frame 0: 001110100110100001101100 = 3a686c - frame_length: 0.039041, cycle_length: 0.001516, high_peak: 0.001090, low_peak: 0.000339, preamble_length: 0.002645, preamble_high: 0.000401
+# Frame 1: 001110100110100001101100 = 3a686c - frame_length: 0.039081, cycle_length: 0.001518, high_peak: 0.001028, low_peak: 0.000277, preamble_length: 0.002645, preamble_high: 0.000321
+# Frame 2: 001110100110100001101100 = 3a686c - frame_length: 0.039081, cycle_length: 0.001516, high_peak: 0.001006, low_peak: 0.000231, preamble_length: 0.002686, preamble_high: 0.000240
+# Frame 3: 001110100110100001101100 = 3a686c - frame_length: 0.039041, cycle_length: 0.001516, high_peak: 0.000991, low_peak: 0.000216, preamble_length: 0.002645, preamble_high: 0.000200
+# Frame 4: 001110100110100001101100 = 3a686c - frame_length: 0.046657, cycle_length: 0.001521, high_peak: 0.000849, low_peak: 0.000361, preamble_length: 0.010141, preamble_high: 0.002886
+# Frame 5: 001110100110100001101100 = 3a686c - frame_length: 0.046697, cycle_length: 0.001523, high_peak: 0.000864, low_peak: 0.000358, preamble_length: 0.010141, preamble_high: 0.002886
+# Frame 6: 001110100110100001101100 = 3a686c - frame_length: 0.046657, cycle_length: 0.001521, high_peak: 0.000842, low_peak: 0.000324, preamble_length: 0.010141, preamble_high: 0.002846
+# Frame 7: 001110100110100001101100 = 3a686c - frame_length: 0.046778, cycle_length: 0.001527, high_peak: 0.000842, low_peak: 0.000327, preamble_length: 0.010141, preamble_high: 0.002846
+# Frame 8: 001101111100001100011100 = 37c31c - frame_length: 0.039041, cycle_length: 0.001516, high_peak: 0.000952, low_peak: 0.000190, preamble_length: 0.002645, preamble_high: 0.000200
+# Frame 9: 001101111100001100011100 = 37c31c - frame_length: 0.039081, cycle_length: 0.001518, high_peak: 0.000949, low_peak: 0.000194, preamble_length: 0.002646, preamble_high: 0.000201
+# Frame 10: 001101111100001100011100 = 37c31c - frame_length: 0.039041, cycle_length: 0.001516, high_peak: 0.000959, low_peak: 0.000197, preamble_length: 0.002645, preamble_high: 0.000160
+# Frame 11: 001101111100001100011100 = 37c31c - frame_length: 0.039041, cycle_length: 0.001516, high_peak: 0.000952, low_peak: 0.000194, preamble_length: 0.002645, preamble_high: 0.000201
+# Frame 12: 001101111100001100011100 = 37c31c - frame_length: 0.046657, cycle_length: 0.001520, high_peak: 0.000808, low_peak: 0.000321, preamble_length: 0.010181, preamble_high: 0.002846
+# Frame 13: 001101111100001100011100 = 37c31c - frame_length: 0.046697, cycle_length: 0.001523, high_peak: 0.000855, low_peak: 0.000337, preamble_length: 0.010141, preamble_high: 0.002886
+# Frame 14: 001101111100001100011100 = 37c31c - frame_length: 0.046697, cycle_length: 0.001523, high_peak: 0.000828, low_peak: 0.000304, preamble_length: 0.010141, preamble_high: 0.002846
+# Frame 15: 001101111100001100011100 = 37c31c - frame_length: 0.093474, cycle_length: 0.003472, high_peak: 0.000802, low_peak: 0.000294, preamble_length: 0.010141, preamble_high: 0.002806
+# Average cycle length: 0.001520
+# Average high peak: 0.000921
+# Average low peak: 0.000278
+# Average preamble length short: 0.002650
+# Average preamble length long: 0.010146
+# Average preamble high short: 0.000240
+# Average preamble high long: 0.002856
 
 # 3a686c, 37c31c
 # Average cycle length: 0.001520
@@ -47,7 +54,7 @@ import json
 # Average preamble high long: 0.002838
 
 # timing in us
-cycle_length = 1518
+cycle_length = 1520
 cycle_high_peak = 921
 cycle_low_peak = 278
 preamble_length_short = 2650
@@ -92,7 +99,8 @@ def long_preamble(sequence):
 
 
 def sequence_24_bits(sequence, num):
-    binary_value = bin(num)[2:]
+    binary_value = bin(num)[2:].zfill(24)
+    print(binary_value)
     for digit in binary_value:
         if digit == '1':
             sequence.append(cycle_high_peak)
@@ -100,6 +108,7 @@ def sequence_24_bits(sequence, num):
         else:
             sequence.append(cycle_low_peak)
             sequence.append(cycle_length - cycle_low_peak)
+
 
 def write_to_file(sequence):
     # Specify the file path for the JSON file

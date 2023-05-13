@@ -9,10 +9,10 @@ def plot():
     time_gen, amplitude_gen = read_sequence_norm('sequence-a-on.json')
     
     # Create a line plot of the original data
-    plt.plot(time, amplitude_norm)
+    plt.plot(time, amplitude_norm, label='Signal org.')
     
     # Create a line plot of the generated data
-    plt.plot(time_gen, amplitude_gen, label='Signal 2')
+    plt.plot(time_gen, amplitude_gen, label='Signal gen')
 
     # Add axis labels and a title
     plt.xlabel('Time (s)')
@@ -46,6 +46,7 @@ def read_signal_norm(file_path):
 
     return time, amplitude_norm
 
+
 def read_sequence_norm(file_path):
     sequence_ms = read_sequence_from_file(file_path)
     # sequence from microsecond to second
@@ -59,7 +60,7 @@ def read_sequence_norm(file_path):
         else:
             amplitude.append(0)
     return time, amplitude
-        
+
 
 def read_sequence_from_file(file_path):
     with open(file_path, 'r') as json_file:

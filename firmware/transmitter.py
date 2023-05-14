@@ -5,7 +5,7 @@ import utime
 
 class Transmitter:
     def __init__(self):
-        self.out = Pin(16, Pin.OUT)
+        self.out = Pin(26, Pin.OUT)
         self.data = self.load_data()
 
     def load_data(self):

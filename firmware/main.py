@@ -1,6 +1,12 @@
 from transmitter import Transmitter
 
-def send(on=True):
+def on():
+    send(True)
+    
+def off():
+    send(False)
+
+def send(on=True, channel='a'):
     # Create a transmitter object
     transmitter = Transmitter()
-    transmitter.send(on)
+    transmitter.send(on, channel)

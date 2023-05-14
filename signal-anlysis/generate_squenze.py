@@ -26,6 +26,7 @@ import json
 # Average preamble high short: 0.000240
 # Average preamble high long: 0.002856
 
+# a-on-1
 # 3a686c, 37c31c
 # Average cycle length: 0.001520
 # Average high peak: 0.000921
@@ -35,6 +36,7 @@ import json
 # Average preamble high short: 0.000240
 # Average preamble high long: 0.002856
 
+# a-on-2
 # 3a686c, 37c31c
 # Average cycle length: 0.001518
 # Average high peak: 0.000917
@@ -44,6 +46,7 @@ import json
 # Average preamble high short: 0.000238
 # Average preamble high long: 0.002868
 
+# a-on-3
 # 37c31c, 39505c
 # Average cycle length: 0.001518
 # Average high peak: 0.000922
@@ -67,8 +70,8 @@ def generate():
     # Frame consists of 24 bits and a preamble of 1 bit = 50 edges
     # the sequence is composed of 16 frames = 800 edges
 
-    num_1 = 0x3a686c
-    num_2 = 0x37c31c
+    num_1 = 0x35acbc
+    num_2 = 0x33397c
 
     sequence = [0]
     for f in range(16):  # 16 frames
@@ -112,7 +115,7 @@ def sequence_24_bits(sequence, num):
 
 def write_to_file(sequence):
     # Specify the file path for the JSON file
-    file_path = "sequence-a-on.json"
+    file_path = "sequence-a-off.json"
 
     # Write the list to the JSON file
     with open(file_path, 'w') as json_file:
